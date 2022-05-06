@@ -3,7 +3,9 @@ pipeline {
   stages {
     stage ('Build') {
       steps {
-        bat 'mvn clean install -DskipTests=true'
+        withMaven(maven : 'maven3.8') {
+                    bat 'mvn clean install -DskipTests=true'
+                }
       }
     }
   }
